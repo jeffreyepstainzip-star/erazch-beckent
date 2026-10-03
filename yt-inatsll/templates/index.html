@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>erazch install — YouTube yuklovchi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#050507;--r:#ff1744;--r2:#ff4d6d;--r3:#b3002a;--tx:#f5f5fa;--mu:#a0a0b4;--bd:rgba(255,23,68,.28)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{min-height:100vh;background:var(--bg);color:var(--tx);font-family:'Manrope','Segoe UI',system-ui,-apple-system,Roboto,sans-serif;display:flex;flex-direction:column;overflow-x:hidden}
+/* fon */
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+.bg::before{content:"";position:absolute;inset:-50% -50% 0 -50%;top:35%;background-image:linear-gradient(rgba(255,23,68,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(255,23,68,.22) 1px,transparent 1px);background-size:60px 60px;transform:perspective(500px) rotateX(62deg);transform-origin:top;animation:grid 3s linear infinite;mask-image:linear-gradient(transparent,#000 40%,transparent 95%);-webkit-mask-image:linear-gradient(transparent,#000 40%,transparent 95%)}
+@keyframes grid{to{background-position:0 60px}}
+.bg i{position:absolute;border-radius:50%;filter:blur(120px)}
+.bg i:nth-child(1){width:520px;height:520px;background:var(--r);opacity:.28;top:-200px;left:50%;margin-left:-260px;animation:pulse 6s ease-in-out infinite}
+.bg i:nth-child(2){width:300px;height:300px;background:#ff0055;opacity:.18;bottom:-100px;left:-80px}
+.bg i:nth-child(3){width:300px;height:300px;background:#ff3d00;opacity:.14;bottom:-100px;right:-80px}
+@keyframes pulse{50%{opacity:.4;transform:scale(1.12)}}
+.dots span{position:absolute;width:3px;height:3px;border-radius:50%;background:var(--r);box-shadow:0 0 8px var(--r);animation:rise linear infinite;opacity:0}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translateY(-100vh);opacity:0}}
+/* nav */
+nav{display:flex;justify-content:center;padding:26px 5vw 0}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Unbounded',sans-serif;font-weight:700;font-size:20px;letter-spacing:.2px}
+.brand .ic{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--r),var(--r3));display:grid;place-items:center;box-shadow:0 0 22px rgba(255,23,68,.7),inset 0 0 12px rgba(255,255,255,.25);animation:glow 2.4s ease-in-out infinite}
+.brand .ic svg{width:22px;height:22px;fill:#fff;margin-left:2px}
+.brand b{color:var(--r);text-shadow:0 0 14px rgba(255,23,68,.9)}
+@keyframes glow{50%{box-shadow:0 0 36px rgba(255,23,68,1),inset 0 0 12px rgba(255,255,255,.3)}}
+/* main */
+main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 5vw 40px;text-align:center}
+h1{font-family:'Unbounded','Manrope',sans-serif;font-size:clamp(28px,6vw,58px);line-height:1.15;font-weight:900;max-width:880px;letter-spacing:-1.5px}
+h1 em{font-style:normal;color:var(--r);text-shadow:0 0 12px rgba(255,23,68,.95),0 0 40px rgba(255,23,68,.6),0 0 80px rgba(255,23,68,.4);animation:flick 5s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.7}94%{opacity:1}96%{opacity:.6}97%{opacity:1}}
+.sub{color:var(--mu);margin:18px 0 36px;font-size:clamp(14px,2.3vw,18px);max-width:540px;line-height:1.5}
+/* karta */
+.wrap{position:relative;width:100%;max-width:680px;padding:2px;border-radius:26px;background:conic-gradient(from var(--an,0deg),transparent 0 70%,var(--r) 85%,transparent 100%);animation:spin 4s linear infinite}
+@property --an{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes spin{to{--an:360deg}}
+.box{background:linear-gradient(180deg,#120508,#0a0305);border-radius:24px;padding:18px;box-shadow:0 0 60px rgba(255,23,68,.25),inset 0 0 40px rgba(255,23,68,.05)}
+.inp{display:flex;gap:10px;flex-wrap:wrap}
+.inp input{flex:1;min-width:210px;padding:17px 20px;border-radius:15px;border:1px solid var(--bd);background:rgba(0,0,0,.55);color:var(--tx);font-size:16px;outline:none;transition:.25s}
+.inp input::placeholder{color:#74747f}
+.inp input:focus{border-color:var(--r);box-shadow:0 0 0 3px rgba(255,23,68,.25),0 0 24px rgba(255,23,68,.35)}
+.btn{position:relative;overflow:hidden;padding:17px 28px;border:0;border-radius:15px;font-family:'Unbounded','Manrope',sans-serif;font-size:14px;font-weight:700;color:#fff;cursor:pointer;background:linear-gradient(135deg,var(--r),var(--r3));box-shadow:0 0 24px rgba(255,23,68,.55);transition:.2s;letter-spacing:.3px}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);transition:.6s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(255,23,68,.9)}
+.btn:hover::after{left:140%}
+.btn:active{transform:scale(.96)}
+.btn:disabled{opacity:.55;pointer-events:none}
+.hint{margin-top:12px;font-size:13px;color:var(--mu);display:flex;gap:8px;align-items:center;justify-content:center}
+.hint svg{width:16px;height:16px;fill:var(--r)}
+#err{color:#ff6b86;font-size:14px;margin-top:12px;display:none;padding:10px 14px;border-radius:12px;background:rgba(255,23,68,.1);border:1px solid var(--bd)}
+/* natija */
+#res{display:none;margin-top:18px;text-align:left;animation:up .45s ease}
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+.v{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.v img{width:220px;max-width:100%;border-radius:14px;border:1px solid var(--bd);box-shadow:0 0 24px rgba(255,23,68,.3)}
+.vi{flex:1;min-width:180px}
+#t{font-weight:800;font-size:17px;line-height:1.3}
+#m{color:var(--mu);font-size:13px;margin-top:6px}
+.q{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px}
+.chip{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 8px 14px;border-radius:18px;border:1px solid var(--bd);background:linear-gradient(180deg,rgba(255,23,68,.10),rgba(255,23,68,.02));color:var(--tx);cursor:pointer;transition:transform .25s cubic-bezier(.2,.9,.3,1.4),box-shadow .25s,border-color .25s,background .25s;overflow:hidden;font-family:inherit}
+.chip .tg{font-size:9.5px;font-weight:800;letter-spacing:1.4px;padding:3px 8px;border-radius:99px;background:rgba(255,23,68,.18);color:var(--r2);border:1px solid rgba(255,23,68,.35)}
+.chip .nm{font-family:'Unbounded',sans-serif;font-weight:700;font-size:22px;line-height:1.1;margin-top:6px}
+.chip .nm sup{font-size:11px;font-weight:500;margin-left:1px;opacity:.8}
+.chip .lb{font-size:11.5px;color:var(--mu);font-weight:600}
+.chip .ck{position:absolute;top:8px;right:8px;width:20px;height:20px;border-radius:50%;background:#fff;display:grid;place-items:center;transform:scale(0);transition:transform .3s cubic-bezier(.2,.9,.3,1.6)}
+.chip .ck svg{width:12px;height:12px;stroke:var(--r);stroke-width:3.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.chip::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(255,255,255,.28),transparent 65%);opacity:0;transition:.3s}
+.chip:hover{transform:translateY(-4px);border-color:var(--r);box-shadow:0 10px 30px rgba(255,23,68,.35)}
+.chip:hover::before{opacity:1}
+.chip.on{background:linear-gradient(160deg,#ff2a55,var(--r3));border-color:#ff7a93;box-shadow:0 0 0 2px rgba(255,23,68,.35),0 0 34px rgba(255,23,68,.85),inset 0 0 20px rgba(255,255,255,.12);transform:translateY(-4px) scale(1.04)}
+.chip.on .tg{background:rgba(255,255,255,.22);color:#fff;border-color:rgba(255,255,255,.4)}
+.chip.on .lb{color:#ffe0e6}
+.chip.on .ck{transform:scale(1)}
+.chip.aud .nm{font-size:19px;letter-spacing:1px}
+/* asosiy tugma */
+.dlbtn{width:100%;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:14px;padding:19px 24px;font-family:'Unbounded',sans-serif;font-size:16px;font-weight:700;letter-spacing:.5px;border-radius:18px;animation:btnp 2.4s ease-in-out infinite}
+@keyframes btnp{0%,100%{box-shadow:0 0 22px rgba(255,23,68,.55)}50%{box-shadow:0 0 44px rgba(255,23,68,.95),0 0 80px rgba(255,23,68,.35)}}
+.dlbtn .ar{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.2);display:grid;place-items:center;transition:.3s}
+.dlbtn .ar svg{width:18px;height:18px;stroke:#fff;stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;animation:bob 1.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(3px)}}
+.dlbtn:hover .ar{background:#fff}.dlbtn:hover .ar svg{stroke:var(--r)}
+.dlbtn.ld .ar svg{display:none}
+.dlbtn.ld .ar::after{content:"";width:18px;height:18px;border-radius:50%;border:3px solid rgba(255,255,255,.35);border-top-color:#fff;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rp .6s ease-out;pointer-events:none}
+@keyframes rp{to{transform:scale(4);opacity:0}}
+/* progress */
+#pg{display:none;margin-top:18px;padding:16px;border-radius:18px;background:rgba(0,0,0,.4);border:1px solid var(--bd)}
+.bar{position:relative;height:14px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:99px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.18) 0 10px,transparent 10px 20px),linear-gradient(90deg,var(--r3),var(--r),var(--r2));background-size:40px 100%,100% 100%;box-shadow:0 0 18px var(--r);transition:width .35s;animation:stripe 1s linear infinite}
+@keyframes stripe{to{background-position:40px 0,0 0}}
+.pr{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px;color:var(--mu);font-weight:600}
+.pr b{font-family:'Unbounded',sans-serif;font-size:15px;color:#fff;text-shadow:0 0 12px var(--r)}
+/* tayyor */
+#ok{display:none;margin-top:18px;align-items:center;gap:16px;padding:18px;border-radius:20px;background:linear-gradient(135deg,rgba(45,255,155,.12),rgba(45,255,155,.03));border:1px solid rgba(45,255,155,.45);box-shadow:0 0 32px rgba(45,255,155,.18);animation:up .5s ease;text-align:left;flex-wrap:wrap}
+#ok .cc{width:54px;height:54px;flex:none}
+#ok .cc circle{fill:rgba(45,255,155,.12);stroke:#2dff9b;stroke-width:3;stroke-dasharray:166;stroke-dashoffset:166;animation:dr .7s .1s forwards}
+#ok .cc path{fill:none;stroke:#2dff9b;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:48;stroke-dashoffset:48;animation:dr .4s .7s forwards}
+@keyframes dr{to{stroke-dashoffset:0}}
+#ok .tx{flex:1;min-width:150px}
+#ok .tx b{display:block;font-family:'Unbounded',sans-serif;font-size:17px;color:#2dff9b;text-shadow:0 0 14px rgba(45,255,155,.6)}
+#ok .tx span{font-size:13px;color:var(--mu)}
+#again{padding:12px 18px;border-radius:14px;border:1px solid rgba(45,255,155,.55);background:rgba(45,255,155,.1);color:#2dff9b;font-weight:800;font-size:13px;font-family:inherit;cursor:pointer;transition:.2s}
+#again:hover{background:#2dff9b;color:#04140c;box-shadow:0 0 24px rgba(45,255,155,.6)}
+/* feat */
+.feat{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:40px}
+.feat div{font-size:13px;color:var(--mu);padding:11px 18px;border:1px solid var(--bd);border-radius:14px;background:rgba(255,23,68,.05);transition:.2s}
+.feat div:hover{border-color:var(--r);box-shadow:0 0 18px rgba(255,23,68,.4);color:#fff}
+/* footer */
+footer{text-align:center;padding:26px 5vw 34px;border-top:1px solid rgba(255,23,68,.15)}
+.pw{font-size:15px;color:var(--mu)}
+.pw a{color:var(--r);text-decoration:none;font-weight:800;text-shadow:0 0 12px rgba(255,23,68,.8)}
+.ct{display:inline-flex;align-items:center;gap:10px;margin-top:14px;padding:12px 22px;border-radius:99px;border:1px solid var(--r);color:#fff;text-decoration:none;font-weight:700;font-size:14px;background:rgba(255,23,68,.1);transition:.25s;box-shadow:0 0 18px rgba(255,23,68,.35)}
+.ct:hover{background:var(--r);box-shadow:0 0 34px rgba(255,23,68,.95);transform:translateY(-2px)}
+.ct svg{width:18px;height:18px;fill:#fff}
+@media(max-width:620px){.q{grid-template-columns:repeat(3,1fr)}.btn{width:100%}.v img{width:100%}.dlbtn{font-size:14px}}@media(max-width:380px){.q{grid-template-columns:repeat(2,1fr)}}
+</style></head><body>
+<div class="bg"><i></i><i></i><i></i><div class="dots" id="dots"></div></div>
+<nav><div class="brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div><span>erazch <b>install</b></span></div></nav>
+<main>
+ <h1>YouTube videolarini <em>bir zumda</em> yuklab oling</h1>
+ <p class="sub">Ssilkani qo'ying, sifatni tanlang va tez yuklab oling. Ro'yxatdan o'tish shart emas.</p>
+ <div class="wrap"><div class="box">
+  <div class="inp"><input id="u" placeholder="https://youtube.com/watch?v=..." autocomplete="off" inputmode="url"><button class="btn" id="go">Qidirish</button></div>
+  <div class="hint"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>Faqat YouTube'dan yuklab olinadi</div>
+  <div id="err"></div>
+  <div id="res">
+   <div class="v"><img id="th" alt=""><div class="vi"><div id="t"></div><div id="m"></div></div></div>
+   <div class="q" id="q"></div>
+   <button class="btn dlbtn" id="dl"><span class="ar"><svg viewBox="0 0 24 24"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg></span><span id="dlt">Yuklab olish</span></button>
+   <div id="pg"><div class="pr"><span id="pt">Boshlanmoqda...</span><b id="pp">0%</b></div><div class="bar"><i id="pb"></i></div></div>
+   <div id="ok"><svg class="cc" viewBox="0 0 54 54"><circle cx="27" cy="27" r="26"/><path d="M15 28l8 8 16-17"/></svg><div class="tx"><b>Tayyor!</b><span>Yuklash boshlandi. Boshlanmasa, tugmani bosing.</span></div><button id="again">Qayta yuklash</button></div>
+  </div>
+ </div></div>
+ <div class="feat"><div>⚡ Juda tez</div><div>🎬 1080p gacha sifat</div><div>🎵 MP3 audio</div><div>📱 Telefon va kompyuter</div></div>
+</main>
+<footer>
+ <div class="pw">Powered by <a href="https://t.me/erazch" target="_blank" rel="noopener">@erazch</a></div>
+</footer>
+<script>
+const $=id=>document.getElementById(id);
+// Netlify'ga joylasangiz: backend (Render va h.k.) manzilini shu yerga yozing, oxirida / bo'lmasin.
+// Masalan: const BACKEND='https://erazch-install.onrender.com';
+const BACKEND='';
+const API=BACKEND||(location.protocol==='file:'?'http://localhost:5000':'');
+let sel={type:'video',quality:'720'},busy=false;
+// zarrachalar
+for(let i=0;i<22;i++){const s=document.createElement('span');s.style.left=Math.random()*100+'%';s.style.bottom='-10px';s.style.animationDuration=(6+Math.random()*8)+'s';s.style.animationDelay=(Math.random()*8)+'s';$('dots').appendChild(s)}
+const opts=[['video','1080','1080','Full HD','FULL HD'],['video','720','720','HD sifat','HD'],['video','480','480','O\'rta','SD'],['video','360','360','Yengil','LITE'],['audio','mp3','MP3','Faqat ovoz','AUDIO']];
+const CK='<span class="ck"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></span>';
+function drawQ(){$('q').innerHTML='';opts.forEach(o=>{const b=document.createElement('button');const on=sel.type===o[0]&&sel.quality===o[1];b.className='chip'+(on?' on':'')+(o[0]==='audio'?' aud':'');
+ b.innerHTML=CK+'<span class="tg">'+o[4]+'</span><span class="nm">'+o[2]+(o[0]==='video'?'<sup>p</sup>':'')+'</span><span class="lb">'+o[3]+'</span>';
+ b.onclick=()=>{sel={type:o[0],quality:o[1]};drawQ()};$('q').appendChild(b)})}
+drawQ();
+function ripple(e){const b=e.currentTarget,r=b.getBoundingClientRect(),d=Math.max(r.width,r.height),x=document.createElement('span');x.className='rip';x.style.width=x.style.height=d+'px';x.style.left=(e.clientX-r.left-d/2)+'px';x.style.top=(e.clientY-r.top-d/2)+'px';b.appendChild(x);setTimeout(()=>x.remove(),600)}
+document.querySelectorAll('.btn').forEach(b=>b.addEventListener('click',ripple));
+let lastId=null;
+function showErr(m){$('err').textContent=m;$('err').style.display=m?'block':'none'}
+$('u').addEventListener('keydown',e=>{if(e.key==='Enter')$('go').click()});
+$('go').onclick=async()=>{
+ showErr('');$('res').style.display='none';$('pg').style.display='none';
+ $('go').disabled=true;$('go').textContent='Qidirilmoqda...';
+ try{
+  const r=await fetch(API+'/api/info',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:$('u').value})});
+  const d=await r.json();
+  if(!r.ok){showErr(d.error)}
+  else{$('th').src=d.thumbnail||'';$('t').textContent=d.title;const s=d.duration||0;
+   $('m').textContent=(d.channel||'')+' • '+Math.floor(s/60)+':'+String(s%60).padStart(2,'0');$('res').style.display='block'}
+ }catch(e){showErr("Serverga ulanib bo'lmadi. run.bat ni ishga tushiring va http://localhost:5000 orqali oching")}
+ $('go').disabled=false;$('go').textContent='Qidirish';
+};
+$('again').onclick=()=>{if(lastId)location.href=API+'/api/file/'+lastId};
+$('dl').onclick=async()=>{
+ if(busy)return;busy=true;showErr('');$('ok').style.display='none';
+ $('dl').disabled=true;$('dl').classList.add('ld');$('dlt').textContent='Yuklanmoqda...';
+ $('pg').style.display='block';$('pb').style.width='3%';$('pp').textContent='0%';$('pt').textContent='Boshlanmoqda...';
+ try{
+  const r=await fetch(API+'/api/start',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:$('u').value,type:sel.type,quality:sel.quality})});
+  const d=await r.json();if(!r.ok)throw new Error(d.error);
+  const id=d.id;
+  while(true){
+   await new Promise(r=>setTimeout(r,700));
+   const s=await (await fetch(API+'/api/status/'+id)).json();
+   if(s.status==='error')throw new Error(s.error||'Xatolik');
+   $('pb').style.width=Math.max(3,s.progress)+'%';$('pp').textContent=s.progress+'%';
+   $('pt').textContent=s.status==='processing'?'Tayyorlanmoqda...':'Yuklanmoqda...';
+   if(s.status==='done'){lastId=id;$('pb').style.width='100%';$('pp').textContent='100%';$('pg').style.display='none';$('ok').style.display='flex';location.href=API+'/api/file/'+id;break}
+  }
+ }catch(e){$('pg').style.display='none';showErr(e.message&&e.message!=='Failed to fetch'?e.message:"Serverga ulanib bo'lmadi. run.bat ishlayotganini tekshiring")}
+ busy=false;$('dl').disabled=false;$('dl').classList.remove('ld');$('dlt').textContent='Yuklab olish';
+};
+</script></body></html>
